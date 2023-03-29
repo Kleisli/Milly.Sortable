@@ -1,0 +1,19 @@
+{
+    "description": "",
+    "type": "neos-framework",
+    "name": "milly/sortable",
+    "require": {
+        "neos/flow": "*",
+        "milly/tools": "@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Milly\\Sortable\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Milly.Sortable"
+        }
+    }
+}
