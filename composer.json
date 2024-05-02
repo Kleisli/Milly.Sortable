@@ -4,7 +4,7 @@
     "name": "kleisli/milly-sortable",
     "require": {
         "neos/flow": "*",
-        "milly/tools": "@dev"
+        "kleisli/milly-tools": "@dev"
     },
     "autoload": {
         "psr-4": {
