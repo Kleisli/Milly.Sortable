@@ -1,7 +1,7 @@
 {
     "description": "",
     "type": "neos-framework",
-    "name": "milly/sortable",
+    "name": "kleisli/milly-sortable",
     "require": {
         "neos/flow": "*",
         "milly/tools": "@dev"
