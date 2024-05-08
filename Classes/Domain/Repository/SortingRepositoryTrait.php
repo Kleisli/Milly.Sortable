@@ -11,7 +11,6 @@ use Neos\Flow\Utility\Algorithms;
 
 trait SortingRepositoryTrait
 {
-
     /**
      * @param object|null $object
      * @return integer

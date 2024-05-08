@@ -1,15 +1,17 @@
 <?php
 namespace Milly\Sortable\Domain\Model;
 
+use Milly\Tools\Service\ClassMappingService;
 use Neos\Flow\Annotations as Flow;
-use Doctrine\ORM\Mapping as ORM;
 use Neos\Flow\Exception;
 use Neos\Flow\Persistence\RepositoryInterface;
 
 trait SortableModelTrait
 {
+
     /**
      * @var RepositoryInterface
+     * @Flow\Transient
      */
     protected $repository;
 
@@ -17,6 +19,20 @@ trait SortableModelTrait
      * @var int
      */
     protected $sorting;
+
+
+    /**
+     * @throws Exception
+     */
+    protected function getRepository(): RepositoryInterface {
+        if(!isset($this->repository)){
+            $classMappingService = new ClassMappingService();
+            $repositoryClassName = $classMappingService->getRepositoryClassByModel($this);
+            $this->repository = new $repositoryClassName();
+        }
+
+        return $this->repository;
+    }
 
     /**
      * @return int
@@ -39,7 +55,7 @@ trait SortableModelTrait
      */
     public function getIsLast(): bool
     {
-        return $this->repository->findNext($this) == null;
+        return $this->getRepository()->findNext($this) == null;
     }
 
     /**
@@ -47,7 +63,7 @@ trait SortableModelTrait
      */
     public function getIsFirst(): bool
     {
-        return $this->repository->findPrevious($this) == null;
+        return $this->getRepository()->findPrevious($this) == null;
     }
 
 }
